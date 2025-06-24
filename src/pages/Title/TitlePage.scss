@@ -1,0 +1,38 @@
+.title-page {
+  position: relative;
+
+
+  .btn-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .subtitle {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+
+  .btn-subtitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    &:hover {
+      background-color: #3e3e3e;
+    }
+  }
+}
