@@ -1,5 +1,6 @@
 <template>
   <div class='title-page'>
+    <img src="../../assets/logo.png" alt="Github Util Logo" class="logo" />
     <h1 class='title'>Github Util</h1>
     <p class='subtitle'>A creation by Wicky</p>
     <div class="navigation-container">

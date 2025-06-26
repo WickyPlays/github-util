@@ -14,13 +14,42 @@
     gap: 20px;
     overflow-y: auto;
 
+    .title-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-back {
+      width: 35px !important;
+      height: 35px !important;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFF;
+      border: 2px solid #ddd;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        transform: translateX(5px);
+        color: #000;
+      }
+
+      &:hover {
+        background-color: #f0f0f0;
+        border-color: #bbb;
+      }
+    }
+
     h1 {
-      font-size: 40px;
+      font-size: 30px;
       margin: 0;
     }
 
     .subtitle {
-      font-size: 26px;
+      font-size: 22px;
       color: #666;
     }
 
@@ -133,7 +162,10 @@
         font-weight: 500;
       }
 
-      .download-btn {
+      .btn-download {
+        display: flex;
+        align-items: center;
+        gap: 5px;
         padding: 8px 16px;
         background-color: #4caf50;
         color: white;

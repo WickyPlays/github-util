@@ -1,6 +1,8 @@
 <script lang="ts">
 import { ref, computed } from 'vue';
 import './LicensesPage.scss';
+import { MdDownload, MdArrowBackIos } from 'vue-icons-plus/md'
+import { LICENSE_DATA, LICENSE_DISPLAY_NAMES } from '../../constants/Licenses';
 
 interface License {
   name: string;
@@ -22,6 +24,12 @@ interface License {
 }
 
 export default {
+
+  components: {
+    MdDownload,
+    MdArrowBackIos
+  },
+
   setup() {
     const licenses = ref<License[]>([]);
     const selectedLicense = ref<License | null>(null);
@@ -66,188 +74,6 @@ export default {
     });
 
     const loadLicenses = async () => {
-      const licenseData: Record<string, any> = {
-        'agpl3-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'agpl3': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'apache-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'apache': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'bsd2': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'bsd3': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc0-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: false, warranty: false },
-          conditions: { notice: false }
-        },
-        'cc0': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: false, warranty: false },
-          conditions: { notice: false }
-        },
-        'cc_by-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nc-header': {
-          permissions: { commercialUse: false, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nc': {
-          permissions: { commercialUse: false, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nc_nd-header': {
-          permissions: { commercialUse: false, modification: false, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nc_nd': {
-          permissions: { commercialUse: false, modification: false, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nc_sa-header': {
-          permissions: { commercialUse: false, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nc_sa': {
-          permissions: { commercialUse: false, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nd-header': {
-          permissions: { commercialUse: true, modification: false, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_nd': {
-          permissions: { commercialUse: true, modification: false, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_sa-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cc_by_sa': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'cddl': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'epl': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'gpl2': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'gpl3-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'gpl3': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'isc': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'lgpl': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'mit': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'mpl-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'mpl': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'unlicense': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: false, warranty: false },
-          conditions: { notice: false }
-        },
-        'wtfpl-header-warranty': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: false, warranty: false },
-          conditions: { notice: false }
-        },
-        'wtfpl-header': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: false, warranty: false },
-          conditions: { notice: false }
-        },
-        'wtfpl': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: false, warranty: false },
-          conditions: { notice: false }
-        },
-        'x11': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        },
-        'zlib': {
-          permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
-          limitations: { liability: true, warranty: true },
-          conditions: { notice: true }
-        }
-      };
 
       const files = import.meta.glob('../../assets/licenses/*.txt', { query: 'raw', import: 'default' });
 
@@ -259,7 +85,7 @@ export default {
           .join(' ');
 
         const licenseKey = fileName.toLowerCase();
-        const licenseInfo = licenseData[licenseKey] || {
+        const licenseInfo = LICENSE_DATA[licenseKey] || {
           permissions: { commercialUse: true, modification: true, distribution: true, privateUse: true },
           limitations: { liability: false, warranty: false },
           conditions: { notice: false }
@@ -327,7 +153,8 @@ export default {
       selectLicense: (license: License) => {
         selectedLicense.value = license;
         processLicenseContent();
-      }
+      },
+      LICENSE_DISPLAY_NAMES
     };
   },
 
@@ -341,7 +168,12 @@ export default {
   <div class="licenses-page">
     <div class="tab-container">
       <div>
-        <h1 class="title">Github Util</h1>
+        <div class="title-container">
+          <button class="btn-back" @click="$router.back()">
+            <MdArrowBackIos />
+          </button>
+          <h1 class="title">Github Util</h1>
+        </div>
         <p class="subtitle">License picker</p>
       </div>
       <div class="form-fields">
@@ -412,9 +244,8 @@ export default {
       </div>
 
       <div class="license-buttons">
-        <button v-for="license in licenses" :key="license.name" @click="selectLicense(license)"
-          :class="{ active: selectedLicense?.name === license.name }">
-          {{ license.displayName }}
+        <button v-for="license in licenses" :key="license.name" @click="selectLicense(license)">
+          {{ LICENSE_DISPLAY_NAMES[license.name] || license.displayName }}
         </button>
       </div>
     </div>
@@ -422,8 +253,9 @@ export default {
     <div class="license-content">
       <div class="license-toolbar" v-if="selectedLicense">
         <p>LICENSE output</p>
-        <button @click="downloadLicense" class="download-btn">
-          Download
+        <button @click="downloadLicense" class="btn-download">
+          <MdDownload />
+          <p>Download</p>
         </button>
       </div>
       <textarea v-if="selectedLicense" v-model="processedContent" readonly></textarea>
