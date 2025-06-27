@@ -281,7 +281,7 @@ export default {
       </div>
       <textarea v-if="selectedLicense" v-model="processedContent" readonly></textarea>
       <div v-else class="no-license-selected">
-        Loading licenses or no licenses available...
+        Loading licenses available...
       </div>
     </div>
   </div>

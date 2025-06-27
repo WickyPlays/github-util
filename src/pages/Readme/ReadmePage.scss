@@ -6,6 +6,13 @@
   min-height: 100%;
   overflow: hidden;
 
+  /* Define callout color variables */
+  --callout-note: #1f6feb;
+  --callout-tip: #238636;
+  --callout-important: #8957e5;
+  --callout-warning: #d29922;
+  --callout-caution: #da3633;
+
   .tab-container {
     padding: 20px;
     background-color: #f5f5f5;
@@ -68,10 +75,10 @@
         }
 
         .monospace-textarea {
-          font-family: 'Courier New', Courier, monospace;
+          font-family: "Courier New", Courier, monospace;
           padding: 8px;
           color: #000;
-          background-color: #FFF;
+          background-color: #fff;
           border: 1px solid #ddd;
           border-radius: 4px;
           min-height: 300px;
@@ -131,7 +138,7 @@
 
       h1 {
         font-size: 2em;
-        padding-bottom: .3em;
+        padding-bottom: 0.3em;
         margin-top: 1.5rem;
         margin-bottom: 1rem;
         border-bottom: 1px solid #ddd;
@@ -141,7 +148,7 @@
 
       h2 {
         font-size: 1.5em;
-        padding-bottom: .3em;
+        padding-bottom: 0.3em;
         margin-top: 1.5rem;
         border-bottom: 1px solid #ddd;
         font-weight: 600;
@@ -209,6 +216,13 @@
         background-color: #f1f1f1;
         padding: 1rem;
         border-radius: 4px;
+
+        &.inline-code {
+          background-color: #f1f1f1;
+          padding: 0.2em 0.4em;
+          font-size: 1em;
+          border-radius: 3px;
+        }
       }
 
       input[type="checkbox"] {
@@ -229,7 +243,7 @@
       }
 
       input[type="checkbox"]:checked::after {
-        content: '✔';
+        content: "✔";
         color: white;
         font-size: 12px;
         position: absolute;
@@ -245,6 +259,99 @@
         background-color: #333;
         border-radius: 3px;
         box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.25);
+      }
+
+      blockquote {
+        margin: 0;
+        margin-bottom: 1rem;
+        padding: 0 1em;
+        border-left: 4px solid #ddd;
+        background-color: #f9f9f9;
+        color: #555;
+      }
+
+      .callout {
+        margin: 0;
+        margin-bottom: 1rem;
+        padding: 0 1em;
+        border-left: 4px solid #ddd;
+        color: #555;
+        font-size: 14px;
+
+        &-title {
+          font-weight: bold;
+          margin-bottom: 1rem;
+
+          &-note {
+            color: var(--callout-note);
+          }
+
+          &-tip {
+            color: var(--callout-tip);
+          }
+
+          &-important {
+            color: var(--callout-important);
+          }
+
+          &-warning {
+            color: var(--callout-warning);
+          }
+
+          &-caution {
+            color: var(--callout-caution);
+          }
+        }
+
+        &-icon {
+          margin: 0;
+          display: inline-block;
+          transform: translateY(2px);
+
+          &-note {
+            fill: var(--callout-note);
+          }
+
+          &-tip {
+            fill: var(--callout-tip);
+          }
+
+          &-important {
+            fill: var(--callout-important);
+          }
+
+          &-warning {
+            fill: var(--callout-warning);
+          }
+
+          &-caution {
+            fill: var(--callout-caution);
+          }
+        }
+
+        &-content {
+          color: #000 !important;
+        }
+
+        &-note {
+          border-color: var(--callout-note) !important;
+        }
+
+        &-tip {
+          border-color: var(--callout-tip) !important;
+        }
+
+        &-important {
+          border-color: var(--callout-important) !important;
+        }
+
+        &-warning {
+          border-color: var(--callout-warning) !important;
+        }
+
+        &-caution {
+          border-color: var(--callout-caution) !important;
+        }
       }
     }
   }
