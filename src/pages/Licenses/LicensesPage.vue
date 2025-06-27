@@ -40,6 +40,7 @@ export default {
 
     // Filter options
     const filterOptions = ref({
+      filterAll: true,
       // Permissions
       commercialUse: false,
       modification: false,
@@ -53,7 +54,7 @@ export default {
     });
 
     const filteredLicenses = computed(() => {
-      if (!Object.values(filterOptions.value).some(v => v)) {
+      if (filterOptions.value.filterAll || !Object.values(filterOptions.value).some((v, k) => k !== 'filterAll' && v)) {
         return licenses.value;
       }
 
@@ -135,9 +136,20 @@ export default {
     };
 
     const updateFilter = (option: keyof typeof filterOptions.value) => {
-      filterOptions.value[option] = !filterOptions.value[option];
+      if (option === 'filterAll') {
+        // When "Filter All" is selected, uncheck all other filters
+        Object.keys(filterOptions.value).forEach(key => {
+          if (key !== 'filterAll') {
+            filterOptions.value[key] = false;
+          }
+        });
+        filterOptions.value.filterAll = true;
+      } else {
+        // When any other filter is selected, uncheck "Filter All"
+        filterOptions.value.filterAll = false;
+        filterOptions.value[option] = !filterOptions.value[option];
+      }
     };
-
     return {
       licenses: filteredLicenses,
       selectedLicense,
@@ -195,6 +207,15 @@ export default {
 
       <div class="filter-section">
         <h3>Filter Licenses</h3>
+
+        <div class="filter-group">
+          <div class="filter-options">
+            <label>
+              <input type="checkbox" :checked="filterOptions.filterAll" @change="updateFilter('filterAll')" />
+              Show All Licenses
+            </label>
+          </div>
+        </div>
 
         <div class="filter-group">
           <h4>Permissions</h4>

@@ -27,7 +27,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #FFF;
+      background-color: #fff;
       border: 2px solid #ddd;
 
       svg {
@@ -105,11 +105,15 @@
             align-items: center;
             gap: 6px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
             color: #444;
 
             input {
               margin: 0;
+            }
+
+            input[type="checkbox"] {
+              accent-color: #2196f3;
             }
           }
         }
